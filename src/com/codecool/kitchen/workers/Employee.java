@@ -3,13 +3,14 @@ package com.codecool.kitchen.workers;
 import java.sql.SQLOutput;
 import java.util.Date;
 
-public class Employee implements Behaviour{
+public abstract class Employee implements Behaviour{
 
     //Fields
     private String name;
     private Date birthYear;
     private float salary;
     private final float TAX_DEDUCTION = 0.99f;
+    private boolean hasKnives;
 
     //Constructor
     public Employee(String name, Date birthYear, float salary) {
@@ -17,6 +18,7 @@ public class Employee implements Behaviour{
         this.birthYear = birthYear;
         this.salary = salary;
     }
+
 
     public String getName() {
         return name;
@@ -43,6 +45,7 @@ public class Employee implements Behaviour{
     }
 
 
+    public abstract void cook();
     @Override
     public String toString() {
         return "name='" + name + '\'' +
@@ -52,7 +55,7 @@ public class Employee implements Behaviour{
 
     @Override
     public void printTax() {
-        System.out.println(TAX_DEDUCTION * this.salary);
+        System.out.println(this.salary - (TAX_DEDUCTION * this.salary));
     }
 
 
