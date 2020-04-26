@@ -1,13 +1,15 @@
 package com.codecool.kitchen.workers;
 
+import java.sql.SQLOutput;
 import java.util.Date;
 
-public class Employee {
+public class Employee implements Behaviour{
 
     //Fields
     private String name;
     private Date birthYear;
     private float salary;
+    private final float TAX_DEDUCTION = 0.99f;
 
     //Constructor
     public Employee(String name, Date birthYear, float salary) {
@@ -40,10 +42,18 @@ public class Employee {
         this.salary = salary;
     }
 
+
     @Override
     public String toString() {
         return "name='" + name + '\'' +
                 ", birthYear=" + birthYear +
                 ", salary=" + salary;
     }
+
+    @Override
+    public void printTax() {
+        System.out.println(TAX_DEDUCTION * this.salary);
+    }
+
+
 }
